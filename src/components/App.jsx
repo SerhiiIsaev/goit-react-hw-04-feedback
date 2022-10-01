@@ -30,9 +30,12 @@ export const App =()=> {
   }
 
   useEffect(() => {
-    const result = (good / total) * 100
-    setTotal(good + neutral + bad)
-    setPositivePercentage(Number(result.toFixed(0)))
+    if (good || neutral || bad) {
+      console.log('hi')
+      setTotal(good + neutral + bad)
+      const result = (good / (good + neutral + bad)) * 100
+      setPositivePercentage(Number(result.toFixed(0)))
+    }
   }, [good, neutral, bad])
   
     return (
