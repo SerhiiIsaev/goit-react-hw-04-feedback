@@ -1,0 +1,8 @@
+.btnList{
+    display: flex;
+    justify-content: center;
+}
+
+.btnListItem:not(:last-child){
+    margin-right: 20px;
+}
