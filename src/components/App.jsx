@@ -11,7 +11,6 @@ export const App =()=> {
   const [bad, setBad] = useState(0)
   const [total, setTotal] = useState(0)
   const [positivePercentage, setPositivePercentage] = useState(0)
-  const options = ['good', 'neutral', 'bad']
 
   const onLeaveFeedback = (feedback) => {
     switch (feedback) {
@@ -37,15 +36,15 @@ export const App =()=> {
     }
   }, [good, neutral, bad])
   
-    return (
-      <>
-        <Section title="Pleace leave feedback">
-          <FeedbackOptions onLeaveFeedback = {onLeaveFeedback} options={options} />
-        </Section>
-        <Section title="Statistics">
-          {total ? <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage}></Statistics>:<Notification message="There is no feedback"/>}
-        </Section>
-      </>
-    )
+  return (
+    <>
+      <Section title="Pleace leave feedback">
+        <FeedbackOptions onLeaveFeedback = {onLeaveFeedback} options={Object.keys({ good, neutral, bad })} />
+      </Section>
+      <Section title="Statistics">
+        {total ? <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage}></Statistics>:<Notification message="There is no feedback"/>}
+      </Section>
+    </>
+  )
   
 };
